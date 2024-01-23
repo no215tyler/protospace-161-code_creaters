@@ -8,7 +8,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
       t.string :encrypted_password, null: false, default: ""
 
       ## Add column
-      t.string :name,               null: false, default: ""
+      t.string :name,               null: false
       t.text :profile,              null: false
       t.text :affiliation,          null: false
       t.text :position,             null: false
