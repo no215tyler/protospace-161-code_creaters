@@ -10,7 +10,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
       ## Add column
       t.string :name,               null: false
       t.text :profile,              null: false
-      t.text :affiliation,          null: false
+      t.text :occupation,           null: false
       t.text :position,             null: false
 
       
