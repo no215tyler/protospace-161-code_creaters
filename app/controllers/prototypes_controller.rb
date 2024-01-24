@@ -9,6 +9,15 @@ class PrototypesController < ApplicationController
 
   end
 
-  #画像の保存を許可するストロングパラメーター未入力
+  def create
+    Prototype.create(prototype_params)
+    redirect_to '/'
+  end
+
+  private
+
+  def prototype_params
+  params.require(:prototype).permit(:title, :image).merge(user_id: current_user.id)
+end
 
 end
