@@ -16,6 +16,14 @@ class PrototypesController < ApplicationController
     end
   end
 
+  def show
+    @prototype = Prototype.find(params[:id])
+  end
+
+  def destroy
+    
+  end
+  
   private
 
   def prototype_params
