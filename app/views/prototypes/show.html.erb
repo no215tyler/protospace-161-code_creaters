@@ -9,8 +9,7 @@
           <div class="prototype__manage">
             <%# 編集機能実装後にパスの変更要（変更後コメントを削除） %>
             <%= link_to "編集する", root_path, class: :prototype__btn %>
-            <%# 削除機能実装後にパスの変更要（変更後コメントを削除） %>
-            <%= link_to "削除する", root_path, class: :prototype__btn %>
+            <%= link_to "削除する", prototype_path(@prototype.id), data: { turbo_method: :delete }, class: :prototype__btn %>
           </div>
         <% end %>
       <div class="prototype__image">
