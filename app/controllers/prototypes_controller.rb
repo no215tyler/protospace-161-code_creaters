@@ -1,10 +1,28 @@
 class PrototypesController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :update, :new, :destroy]
+
   def index
     @prototypes = Prototype.includes(:user)
   end
 
   def new
     @prototype = Prototype.new
+  end
+
+  def edit
+    @prototype = Prototype.find(params[:id])
+    unless current_user.id == @prototype.user_id
+      redirect_to root_path
+    end
+  end
+
+  def update
+    @prototype = Prototype.find(params[:id])
+    if @prototype.update(prototype_params)
+      redirect_to prototype_path(@prototype)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def create
