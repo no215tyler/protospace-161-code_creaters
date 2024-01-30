@@ -11,9 +11,9 @@ class PrototypesController < ApplicationController
 
   def edit
     @prototype = Prototype.find(params[:id])
-    return unless current_user.id != @prototype.user_id
-
-    redirect_to root_path
+    unless current_user.id == @prototype.user_id
+      redirect_to root_path
+    end
   end
 
   def update
@@ -21,7 +21,7 @@ class PrototypesController < ApplicationController
     if @prototype.update(prototype_params)
       redirect_to prototype_path(@prototype)
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
